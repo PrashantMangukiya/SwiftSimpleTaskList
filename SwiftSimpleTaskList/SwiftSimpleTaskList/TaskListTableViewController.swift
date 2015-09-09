@@ -208,7 +208,7 @@ class TaskListTableViewController: UITableViewController, TaskDelegate {
     }
     
     // disable edit button if no record
-    func enableDisableEditButton() {
+    private func enableDisableEditButton() {
         if self.taskList.count == 0 {
             self.editButton.enabled = false
         }else{
@@ -259,7 +259,7 @@ class TaskListTableViewController: UITableViewController, TaskDelegate {
     }
     
     // delete task record from core data.
-    func deleteTaskRecord(indexPath: NSIndexPath){
+    private func deleteTaskRecord(indexPath: NSIndexPath){
         
         // 1 - find which record to be deleted
         var taskToDelete = self.taskList[indexPath.row]
@@ -299,7 +299,7 @@ class TaskListTableViewController: UITableViewController, TaskDelegate {
     }
     
     // show alert message with OK button
-    func showAlertMessage( #alertTitle: String, alertMessage: String) {
+    private func showAlertMessage( #alertTitle: String, alertMessage: String) {
         
         let myAlertVC = UIAlertController( title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
