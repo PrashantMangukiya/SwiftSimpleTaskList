@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="59m-BR-8TI">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Task-->
+        <scene sceneID="ofE-0E-aux">
+            <objects>
+                <tableViewController id="vTI-eB-IJY" customClass="TaskListTableViewController" customModule="SwiftSimpleTaskList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tiv-qb-fSU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="60" id="piG-Sb-37o" customClass="TaskCellTableViewCell" customModule="SwiftSimpleTaskList" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="piG-Sb-37o" id="aMB-kq-T5W">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ9-CD-rwq">
+                                            <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="FI9-Jt-Q0B"/>
+                                                <constraint firstAttribute="width" constant="40" id="nY2-KN-mAY"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task title will come here, it support long title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yvk-sC-TiN">
+                                            <rect key="frame" x="60" y="10" width="530" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="w0J-61-eGz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="yvk-sC-TiN" secondAttribute="trailing" constant="10" id="0LP-rb-hst"/>
+                                        <constraint firstAttribute="centerY" secondItem="nZ9-CD-rwq" secondAttribute="centerY" id="7dM-Uv-NmD"/>
+                                        <constraint firstItem="yvk-sC-TiN" firstAttribute="leading" secondItem="nZ9-CD-rwq" secondAttribute="trailing" constant="10" id="LhA-T0-alZ"/>
+                                        <constraint firstItem="nZ9-CD-rwq" firstAttribute="top" secondItem="yvk-sC-TiN" secondAttribute="top" id="Q36-nN-XbK"/>
+                                        <constraint firstItem="nZ9-CD-rwq" firstAttribute="leading" secondItem="aMB-kq-T5W" secondAttribute="leading" constant="10" id="iF6-5c-mhs"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="Title" destination="yvk-sC-TiN" id="U3F-J4-pGt"/>
+                                    <outlet property="colorPreview" destination="nZ9-CD-rwq" id="TqA-Rb-IzR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vTI-eB-IJY" id="xva-DN-mib"/>
+                            <outlet property="delegate" destination="vTI-eB-IJY" id="amo-48-307"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Task" id="YIE-Nv-TvV">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="MO8-67-7d4">
+                            <connections>
+                                <action selector="editButtonClicked:" destination="vTI-eB-IJY" id="wKU-R4-Z7T"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9Kh-ji-y71">
+                            <connections>
+                                <action selector="taskAddButtonClicked:" destination="vTI-eB-IJY" id="wCx-hP-get"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="MO8-67-7d4" id="kp8-Wu-C7M"/>
+                        <outlet property="taskAddButton" destination="9Kh-ji-y71" id="kzN-Sn-c0Y"/>
+                        <segue destination="2xR-bQ-rGp" kind="show" identifier="segueTaskEdit" id="BT1-Ru-vIZ"/>
+                        <segue destination="YbN-1d-Tur" kind="show" identifier="segueTaskAdd" id="lGi-w6-Bhk"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YBP-Fk-Qzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="366"/>
+        </scene>
+        <!--Add-->
+        <scene sceneID="bof-oD-0fr">
+            <objects>
+                <viewController id="YbN-1d-Tur" customClass="TaskAddViewController" customModule="SwiftSimpleTaskList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tz7-GG-6sG"/>
+                        <viewControllerLayoutGuide type="bottom" id="mHe-eZ-SYG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sit-HA-RKi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Describe task.." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpp-aj-OY7">
+                                <rect key="frame" x="16" y="79" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wxf-G3-b7T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardAppearance="light"/>
+                                <connections>
+                                    <action selector="taskTitleEditingChanged:" destination="YbN-1d-Tur" eventType="editingChanged" id="mRS-16-lNj"/>
+                                </connections>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o1P-3h-F6D">
+                                <rect key="frame" x="16" y="117" width="568" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="z1o-l9-JDI"/>
+                                </constraints>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ML-Nz-TBB">
+                                <rect key="frame" x="220" y="287" width="160" height="160"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="BJd-no-mXr"/>
+                                    <constraint firstAttribute="height" constant="160" id="tka-oG-3pg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="9ML-Nz-TBB" secondAttribute="centerX" id="03z-ve-vCy"/>
+                            <constraint firstAttribute="trailing" secondItem="o1P-3h-F6D" secondAttribute="trailing" constant="16" id="8Y6-Xc-qt8"/>
+                            <constraint firstAttribute="trailing" secondItem="dpp-aj-OY7" secondAttribute="trailing" constant="16" id="EZS-Tq-I4U"/>
+                            <constraint firstItem="9ML-Nz-TBB" firstAttribute="top" secondItem="o1P-3h-F6D" secondAttribute="bottom" constant="8" id="Vey-qO-Q22"/>
+                            <constraint firstItem="dpp-aj-OY7" firstAttribute="leading" secondItem="Sit-HA-RKi" secondAttribute="leading" constant="16" id="k85-5Y-tCT"/>
+                            <constraint firstItem="dpp-aj-OY7" firstAttribute="top" secondItem="tz7-GG-6sG" secondAttribute="bottom" constant="15" id="lsJ-qS-hmy"/>
+                            <constraint firstItem="o1P-3h-F6D" firstAttribute="leading" secondItem="Sit-HA-RKi" secondAttribute="leading" constant="16" id="s8V-B7-VTe"/>
+                            <constraint firstItem="o1P-3h-F6D" firstAttribute="top" secondItem="dpp-aj-OY7" secondAttribute="bottom" constant="8" id="shR-D7-gsf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add" id="faX-4S-Egm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pBk-97-jwZ">
+                            <connections>
+                                <action selector="cancelButtonClicked:" destination="YbN-1d-Tur" id="h0Y-q2-ioh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Nci-Qk-YbA">
+                            <connections>
+                                <action selector="saveButtonClicked:" destination="YbN-1d-Tur" id="cH5-ew-0AY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="pBk-97-jwZ" id="E3H-TJ-Aye"/>
+                        <outlet property="colorPicker" destination="o1P-3h-F6D" id="CV6-sk-NBl"/>
+                        <outlet property="colorPreview" destination="9ML-Nz-TBB" id="Wvo-O0-rtO"/>
+                        <outlet property="saveButton" destination="Nci-Qk-YbA" id="qOH-aU-GPm"/>
+                        <outlet property="taskTitle" destination="dpp-aj-OY7" id="i6P-01-ZVV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5U5-9V-8HY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2879" y="-24"/>
+        </scene>
+        <!--Edit-->
+        <scene sceneID="hrN-CK-t0C">
+            <objects>
+                <viewController id="2xR-bQ-rGp" customClass="TaskEditViewController" customModule="SwiftSimpleTaskList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hk3-HU-6a7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jov-2p-hIQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OyX-MX-xEo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijr-35-tSF">
+                                <rect key="frame" x="16" y="79" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EHc-LF-lqO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" keyboardAppearance="light"/>
+                                <connections>
+                                    <action selector="taskTitleEditingChanged:" destination="2xR-bQ-rGp" eventType="editingChanged" id="QOh-BS-TuM"/>
+                                </connections>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9g-Jc-Qfq">
+                                <rect key="frame" x="16" y="117" width="568" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="NaK-pP-Oc1"/>
+                                </constraints>
+                            </pickerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyT-F1-WdC">
+                                <rect key="frame" x="220" y="287" width="160" height="160"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="5YZ-qa-euT"/>
+                                    <constraint firstAttribute="width" constant="160" id="gUa-6N-rfw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ijr-35-tSF" secondAttribute="trailing" constant="16" id="26y-Vx-Pyy"/>
+                            <constraint firstItem="ijr-35-tSF" firstAttribute="leading" secondItem="OyX-MX-xEo" secondAttribute="leading" constant="16" id="7Fs-NF-ynN"/>
+                            <constraint firstItem="ijr-35-tSF" firstAttribute="top" secondItem="Hk3-HU-6a7" secondAttribute="bottom" constant="15" id="Aof-bm-BML"/>
+                            <constraint firstAttribute="centerX" secondItem="xyT-F1-WdC" secondAttribute="centerX" id="NtA-jp-yFZ"/>
+                            <constraint firstItem="xyT-F1-WdC" firstAttribute="top" secondItem="F9g-Jc-Qfq" secondAttribute="bottom" constant="8" id="QR2-rd-EPh"/>
+                            <constraint firstAttribute="trailing" secondItem="F9g-Jc-Qfq" secondAttribute="trailing" constant="16" id="i9m-ZA-HCO"/>
+                            <constraint firstItem="F9g-Jc-Qfq" firstAttribute="top" secondItem="ijr-35-tSF" secondAttribute="bottom" constant="8" id="rK8-o1-7zk"/>
+                            <constraint firstItem="F9g-Jc-Qfq" firstAttribute="leading" secondItem="OyX-MX-xEo" secondAttribute="leading" constant="16" id="z7N-Rq-VpA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit" id="h3H-ix-VV1">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="cvu-YU-OzP">
+                            <connections>
+                                <action selector="cancelButtonClicked:" destination="2xR-bQ-rGp" id="mLV-WI-DYP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lV5-AI-2dO">
+                            <connections>
+                                <action selector="saveButtonClicked:" destination="2xR-bQ-rGp" id="oOm-2g-1tu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="cvu-YU-OzP" id="cws-TE-jjw"/>
+                        <outlet property="colorPicker" destination="F9g-Jc-Qfq" id="Sww-MY-Mwf"/>
+                        <outlet property="colorPreview" destination="xyT-F1-WdC" id="U9y-l0-yOE"/>
+                        <outlet property="saveButton" destination="lV5-AI-2dO" id="7xB-NH-9Ay"/>
+                        <outlet property="taskTitle" destination="ijr-35-tSF" id="RaX-8C-Rc1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucQ-p5-vny" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2879" y="710"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1WV-N3-Fa4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="59m-BR-8TI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z1Y-hr-N75">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vTI-eB-IJY" kind="relationship" relationship="rootViewController" id="Vjh-5e-A5h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rN5-bK-V3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1272" y="366"/>
+        </scene>
+    </scenes>
+</document>
